@@ -1,11 +1,15 @@
 {
-  "name": "bot-bedrock",
+  "name": "bot-minecraft",
   "version": "1.0.0",
+  "description": "Bot para Migajaland",
   "main": "index.js",
-  "dependencies": {
-    "bedrock-protocol": "^1.33.0"
-  },
   "scripts": {
     "start": "node index.js"
+  },
+  "dependencies": {
+    "bedrock-protocol": "latest"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
