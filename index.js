@@ -20,3 +20,4 @@ client.on('error', (err) => {
 client.on('clientLog', (log) => {
   console.log(log);
 });
+// Reiniciando para limpiar cache
