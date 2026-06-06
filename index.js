@@ -1,25 +1,25 @@
 const { createClient } = require('bedrock-protocol');
-require('./keep_alive.js'); // Mantiene el bot activo
+require('./keep_alive.js');
 
+// Configuramos el cliente con parámetros para mayor estabilidad
 const client = createClient({
   host: 'miga-land.datho.st',
   port: 17645,
-  // Cambiado para eliminar espacios y evitar errores de validación
-  username: 'CapitanYami86', 
-  offline: false, // Usamos Microsoft Auth
-  // Mantenemos la carpeta, pero asegúrate de que Railway tenga permiso de escritura
-  profilesFolder: './profiles' 
+  username: 'CapitanYami86',
+  offline: false,
+  profilesFolder: './profiles',
+  skipPing: true // Esto ayuda a evitar que el bot se cuelgue al intentar hacer el ping inicial
 });
 
 client.on('connect', () => {
   console.log('¡Conectado al servidor!');
 });
 
+// Capturamos el error pero evitamos que el bot se cierre por completo inmediatamente
 client.on('error', (err) => {
-  console.error('Error detectado:', err);
+  console.error('Error de conexión, intentando mantener vivo el proceso:', err);
 });
 
 client.on('clientLog', (log) => {
   console.log(log);
 });
-// Arreglos aplicados para limpieza de sesión y nombre de usuario sin espacios
