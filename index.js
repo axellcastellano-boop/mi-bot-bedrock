@@ -4,9 +4,11 @@ require('./keep_alive.js'); // Mantiene el bot activo
 const client = createClient({
   host: 'miga-land.datho.st',
   port: 17645,
-  username: 'Capitan Yami 86', // Puedes cambiar el nombre si quieres
+  // Cambiado para eliminar espacios y evitar errores de validación
+  username: 'CapitanYami86', 
   offline: false, // Usamos Microsoft Auth
-  profilesFolder: './profiles' // Para guardar la sesión
+  // Mantenemos la carpeta, pero asegúrate de que Railway tenga permiso de escritura
+  profilesFolder: './profiles' 
 });
 
 client.on('connect', () => {
@@ -14,10 +16,10 @@ client.on('connect', () => {
 });
 
 client.on('error', (err) => {
-  console.log('Error:', err);
+  console.error('Error detectado:', err);
 });
 
 client.on('clientLog', (log) => {
   console.log(log);
 });
-// Reiniciando para limpiar cache
+// Arreglos aplicados para limpieza de sesión y nombre de usuario sin espacios
