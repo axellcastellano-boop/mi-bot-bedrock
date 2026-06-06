@@ -4,7 +4,7 @@ require('./keep_alive.js'); // Mantiene el bot activo
 const client = createClient({
   host: 'miga-land.datho.st',
   port: 17645,
-  username: 'MigajaBot', // Puedes cambiar el nombre si quieres
+  username: 'Capitan Yami 86', // Puedes cambiar el nombre si quieres
   offline: false, // Usamos Microsoft Auth
   profilesFolder: './profiles' // Para guardar la sesión
 });
