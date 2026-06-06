@@ -1,17 +1,22 @@
 const { createClient } = require('bedrock-protocol');
-require('./keep_alive.js');
+require('./keep_alive.js'); // Mantiene el bot activo
 
 const client = createClient({
   host: 'miga-land.datho.st',
   port: 17645,
-  username: 'CagyTooth6282',
-  offline: false
+  username: 'MigajaBot', // Puedes cambiar el nombre si quieres
+  offline: false, // Usamos Microsoft Auth
+  profilesFolder: './profiles' // Para guardar la sesión
 });
 
-client.on('packet', (packet) => {
-  console.log('Recibiendo paquete:', packet);
+client.on('connect', () => {
+  console.log('¡Conectado al servidor!');
 });
 
-client.on('spawn', () => {
-  console.log('Bot conectado al servidor correctamente');
+client.on('error', (err) => {
+  console.log('Error:', err);
+});
+
+client.on('clientLog', (log) => {
+  console.log(log);
 });
