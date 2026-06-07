@@ -1,12 +1,12 @@
 const http = require('http');
 const { createClient } = require('bedrock-protocol');
 
-// 1. Servidor de salud dinámico: Escucha el puerto exacto que Railway exige para no apagar el bot
-const serverPort = process.env.PORT || 3000;
+// 1. Servidor de salud dinámico: Escucha estrictamente el puerto secreto asignado por Railway
+const serverPort = process.env.PORT || 8080;
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Bot AFK en ejecucion de fondo\n');
-}).listen(serverPort, () => {
+}).listen(serverPort, '0.0.0.0', () => {
   console.log(`[Railway] Servidor de salud respondiendo correctamente en el puerto: ${serverPort}`);
 });
 
