@@ -1,10 +1,18 @@
+const http = require('http');
 const { createClient } = require('bedrock-protocol');
 
-// require('./keep_alive.js'); // <-- ELIMINADO: Ya no abrimos el puerto 8080 para evitar que Railway tumbe el proceso.
+// 1. Servidor de salud dinámico: Escucha el puerto exacto que Railway exige para no apagar el bot
+const serverPort = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Bot AFK en ejecucion de fondo\n');
+}).listen(serverPort, () => {
+  console.log(`[Railway] Servidor de salud respondiendo correctamente en el puerto: ${serverPort}`);
+});
 
 console.log("Iniciando el bot AFK para Migajaland...");
 
-// Configuramos el cliente corrigiendo el motor de red
+// 2. Configuración del cliente de Bedrock
 const client = createClient({
   host: 'miga-land.datho.st',
   port: 17645,
