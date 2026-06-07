@@ -1,5 +1,6 @@
 const { createClient } = require('bedrock-protocol');
-require('./keep_alive.js');
+
+// require('./keep_alive.js'); // <-- ELIMINADO: Ya no abrimos el puerto 8080 para evitar que Railway tumbe el proceso.
 
 console.log("Iniciando el bot AFK para Migajaland...");
 
