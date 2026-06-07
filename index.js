@@ -3,7 +3,7 @@ require('./keep_alive.js');
 
 console.log("Iniciando el bot AFK para Migajaland...");
 
-// Configuramos el cliente con parámetros para mayor estabilidad y parches de versión
+// Configuramos el cliente corrigiendo el motor de red
 const client = createClient({
   host: 'miga-land.datho.st',
   port: 17645,
@@ -11,9 +11,8 @@ const client = createClient({
   offline: false,
   profilesFolder: './profiles',
   skipPing: true,             // Evita que el bot se cuelgue al intentar hacer el ping inicial
-  raknetBackend: 'js',        // PARCHE RAILWAY: Evita errores de compilación nativa C++ usando JS puro
-  version: '1.26.20',         // FORZADO: Usa esta versión para enviar el ID de protocolo 975 (compatible con la 1.26.23)
-  skipValidation: true        // IGNORAR ERRORES: Se salta la verificación estricta de paquetes del servidor
+  version: '1.26.20',         // FORZADO: Envía el protocolo 975 compatible con tu server 1.26.23
+  skipValidation: true        // IGNORAR ERRORES: Se salta la verificación estricta de paquetes
 });
 
 client.on('connect', () => {
