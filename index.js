@@ -1,8 +1,8 @@
 const http = require('http');
 const { createClient } = require('bedrock-protocol');
 
-// 1. Servidor de salud dinámico: Escucha estrictamente el puerto secreto asignado por Railway
-const serverPort = process.env.PORT || 8080;
+// Forzar al servidor a responder exactamente en el puerto 8080 que Railway audita por defecto
+const serverPort = 8080;
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Bot AFK en ejecucion de fondo\n');
